@@ -4,6 +4,9 @@
   "main": "index.js",
   "license": "MIT",
   "private": true,
+  "scripts": {
+    "start": "nodemon -e ts,js -x babel-node --inspect src/index.ts --extensions .ts,.js"
+  },
   "dependencies": {
     "@babel/core": "^7.7.7",
     "@babel/node": "^7.7.7",

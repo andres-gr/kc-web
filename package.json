@@ -6,8 +6,12 @@
   "workspaces": [
     "environments/*"
   ],
+  "scripts": {
+    "start:backend": "yarn workspace backend run start"
+  },
   "devDependencies": {
     "cross-env": "^6.0.3",
-    "npm-run-all": "^4.1.5"
+    "npm-run-all": "^4.1.5",
+    "yarn": "^1.21.1"
   }
 }
