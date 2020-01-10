@@ -1,0 +1,21 @@
+# modules
+node_modules
+
+# builds
+*build*
+dist
+
+# lock files
+yarn.lock
+package-lock.json
+
+# editors
+.vscode
+.vim
+.idea
+
+# errors
+*error.log
+
+# misc
+.DS_Store
