@@ -5,6 +5,8 @@
   "extends": [
     "airbnb-typescript/base",
     "plugin:putout/recommended",
+    "plugin:import/errors",
+    "plugin:import/warnings",
     "plugin:import/typescript"
   ],
   "parser": "@typescript-eslint/parser",
@@ -16,6 +18,7 @@
     "sort-exports"
   ],
   "rules": {
+    "no-console": "warn",
     "no-var": "error",
     "indent": "off",
     "semi": [
@@ -220,10 +223,7 @@
     "module-resolver/use-alias": [
       "error",
       {
-        "extensions": [
-          ".ts"
-        ],
-        "projectRoot": "./backend/"
+        "projectRoot": "/environments/backend/"
       }
     ],
     "sort-destructure-keys/sort-destructure-keys": "error",
@@ -236,18 +236,14 @@
     ]
   },
   "settings": {
+    "import/extensions": [
+      ".js",
+      ".ts"
+    ],
     "import/resolver": {
-      "node": {
-        "paths": [
-          "./src"
-        ]
-      },
       "typescript": {
         "alwaysTryTypes": true,
-        "directory": [
-          "./backend/tsconfig.json",
-          "./frontend/tsconfig.json"
-        ]
+        "directory": "/environments/*/tsconfig.json"
       }
     }
   }

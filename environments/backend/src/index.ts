@@ -9,7 +9,7 @@ app.use(cors())
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 
-app.get('/', async (_req, res) => {
+app.get('/api', async (_req, res) => {
   const result = await new Promise<boolean>(resolve => {
     setTimeout(() => {
       resolve(true)
