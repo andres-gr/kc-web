@@ -5,10 +5,11 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "start": "cross-env NODE_ENV=development webpack-dev-server --progress --env development"
+    "start": "cross-env NODE_ENV=development webpack-dev-server --progress --env development",
+    "build": "cross-env NODE_ENV=production rimraf ../backend/dist && webpack --env production && mv dist ../backend"
   },
   "dependencies": {
-    "@babel/core": "^7.7.7",
+    "@babel/core": "^7.8.0",
     "@hot-loader/react-dom": "^16.11.0",
     "axios": "^0.19.1",
     "immer": "^5.2.1",
@@ -19,10 +20,10 @@
     "zustand": "^2.2.2"
   },
   "devDependencies": {
-    "@babel/plugin-proposal-optional-chaining": "^7.7.5",
-    "@babel/preset-env": "^7.7.7",
-    "@babel/preset-react": "^7.7.4",
-    "@babel/preset-typescript": "^7.7.7",
+    "@babel/plugin-proposal-optional-chaining": "^7.8.0",
+    "@babel/preset-env": "^7.8.0",
+    "@babel/preset-react": "^7.8.0",
+    "@babel/preset-typescript": "^7.8.0",
     "@types/prop-types": "^15.7.3",
     "@types/react": "^16.9.17",
     "@types/react-dom": "^16.9.4",
@@ -37,7 +38,7 @@
     "eslint": "^6.8.0",
     "eslint-config-airbnb-typescript": "^6.3.1",
     "eslint-import-resolver-typescript": "^2.0.0",
-    "eslint-plugin-import": "^2.19.1",
+    "eslint-plugin-import": "^2.20.0",
     "eslint-plugin-jsx-a11y": "^6.2.3",
     "eslint-plugin-module-resolver": "^0.16.0",
     "eslint-plugin-putout": "^3.2.1",
@@ -51,6 +52,7 @@
     "json-loader": "^0.5.7",
     "mini-css-extract-plugin": "^0.9.0",
     "optimize-css-assets-webpack-plugin": "^5.0.3",
+    "rimraf": "^3.0.0",
     "sass-loader": "^8.0.1",
     "style-loader": "^1.1.2",
     "terser-webpack-plugin": "^2.3.2",

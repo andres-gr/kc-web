@@ -48,6 +48,7 @@ const config = ({
       filename: isDev ? '[name].css' : '[name]-[contenthash].css',
     }),
     new HtmlWebpackPlugin({
+      favicon: path.join(rootPath, 'src/public/favicon.ico'),
       inject: true,
       template: path.join(rootPath, 'src/public/index.html'),
     }),

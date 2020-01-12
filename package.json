@@ -9,7 +9,12 @@
   "scripts": {
     "start:backend": "yarn workspace backend start",
     "start:frontend": "yarn workspace frontend start",
-    "start": "run-p start:backend start:frontend"
+    "start": "run-p start:backend start:frontend",
+    "build:backend": "yarn workspace backend build",
+    "build:frontend": "yarn workspace frontend build",
+    "build": "run-s build:frontend build:backend",
+    "serve": "yarn workspace backend serve",
+    "prod": "run-s build serve"
   },
   "devDependencies": {
     "cross-env": "^6.0.3",
