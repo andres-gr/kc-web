@@ -364,6 +364,7 @@
       ".tsx"
     ],
     "import/resolver": {
+      "babel-module": {},
       "typescript": {
         "alwaysTryTypes": true,
         "directory": "/environments/*/tsconfig.json"

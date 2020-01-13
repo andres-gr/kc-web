@@ -241,6 +241,11 @@
       ".ts"
     ],
     "import/resolver": {
+      "node": {
+        "paths": [
+          "/environments/backend/src/"
+        ]
+      },
       "typescript": {
         "alwaysTryTypes": true,
         "directory": "/environments/*/tsconfig.json"

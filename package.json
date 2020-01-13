@@ -14,11 +14,20 @@
     "build:frontend": "yarn workspace frontend build",
     "build": "run-s build:frontend build:backend",
     "serve": "yarn workspace backend serve",
-    "prod": "run-s build serve"
+    "prod": "run-s build serve",
+    "lint:backend": "yarn workspace backend lint",
+    "lint:frontend": "yarn workspace frontend lint"
   },
   "devDependencies": {
     "cross-env": "^6.0.3",
+    "husky": "^4.0.7",
     "npm-run-all": "^4.1.5",
     "yarn": "^1.21.1"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "run-s lint:backend lint:frontend",
+      "pre-push": "run-s lint:backend lint:frontend"
+    }
   }
 }
