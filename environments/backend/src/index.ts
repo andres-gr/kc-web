@@ -30,6 +30,6 @@ app.get('/api', async (_req, res) => {
 app.listen(
   PORT,
   () => {
-    console.log(`Server started at port: ${PORT}`)
+    console.log(`Server listening on port: ${PORT}`)
   },
 )

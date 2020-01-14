@@ -20,7 +20,6 @@ const config = ({
     path: path.join(rootPath, 'dist'),
     publicPath: '/',
   },
-  devtool: 'source-map',
   optimization: {
     moduleIds: 'hashed',
     runtimeChunk: 'single',
@@ -86,6 +85,23 @@ const config = ({
       {
         test: /\.(js|ts)?x$/,
         exclude: /node_modules/,
+        enforce: 'pre',
+        use: [
+          {
+            loader: 'eslint-loader',
+            options: {
+              cache: true,
+              emitError: false,
+              emitWarning: isDev,
+              failOnError: true,
+              failOnWarning: false,
+            },
+          },
+        ],
+      },
+      {
+        test: /\.(js|ts)?x$/,
+        exclude: /node_modules/,
         use: [
           {
             loader: 'babel-loader',
@@ -95,11 +111,11 @@ const config = ({
       },
       {
         test: /\.(png|jp(e*)g|svg|gif)$/,
-        use: 'url-loader'
+        use: 'url-loader',
       },
       {
         test: /\.(woff|woff2|eot|ttf|otf)$/,
-        use: 'file-loader'
+        use: 'file-loader',
       },
     ],
   },

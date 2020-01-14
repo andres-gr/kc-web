@@ -6,7 +6,9 @@ const port = process.env.PORT || 3000;
 
 const config = {
   mode: 'development',
+  devtool: 'eval-source-map',
   output: {
+    devtoolModuleFilenameTemplate: 'file:///[absolute-resource-path]',
     filename: '[name].js',
   },
   plugins: [
@@ -23,7 +25,7 @@ const config = {
     open: false,
     overlay: {
       errors: true,
-      warnings: true
+      warnings: false,
     },
     port,
     stats: 'minimal',

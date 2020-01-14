@@ -14,9 +14,7 @@ const config = {
         cache: true,
         parallel: true,
         sourceMap: true,
-        terserOptions: {
-          ecma: 6
-        },
+        terserOptions: { ecma: 6 },
       }),
       new OptimizeCSSAssetsPlugin(),
     ],
