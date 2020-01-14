@@ -15,8 +15,26 @@
     "noEmit": true,
     "noImplicitAny": true,
     "paths": {
+      "Api/*": [
+        "./api/*"
+      ],
       "Components/*": [
         "./components/*"
+      ],
+      "Hooks/*": [
+        "./hooks/*"
+      ],
+      "Layouts/*": [
+        "./layouts/*"
+      ],
+      "Pages/*": [
+        "./pages/*"
+      ],
+      "Styles/*": [
+        "./styles/*"
+      ],
+      "Utils/*": [
+        "./utils/*"
       ],
       "react-dom": [
         "@hot-loader/react-dom"
@@ -30,6 +48,9 @@
     "target": "esnext"
   },
   "include": [
-    "src"
+    "./src/**/*"
+  ],
+  "exclude": [
+    "node_modules"
   ]
 }
