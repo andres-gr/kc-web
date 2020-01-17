@@ -11,3 +11,6 @@ webpack
 
 # generated global
 global.d.ts
+
+# misc
+postinstall

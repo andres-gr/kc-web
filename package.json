@@ -16,7 +16,8 @@
     "serve": "yarn workspace backend serve",
     "prod": "run-s build serve",
     "lint:backend": "yarn workspace backend lint",
-    "lint:frontend": "yarn workspace frontend lint"
+    "lint:frontend": "yarn workspace frontend lint",
+    "postinstall": "chmod +x ./postinstall/script.sh && ./postinstall/script.sh"
   },
   "devDependencies": {
     "cross-env": "^6.0.3",

@@ -4,6 +4,7 @@ import {
   Route,
   Switch,
 } from 'react-router-dom'
+import 'Api/'
 import Home from 'Pages/Home'
 import One from 'Pages/One'
 

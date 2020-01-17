@@ -193,8 +193,11 @@
         "after": true
       }
     ],
-    "import/newline-after-import": "off",
-    "@typescript-eslint/semi": "off",
+    "import/order": "error",
+    "@typescript-eslint/semi": [
+      "error",
+      "never"
+    ],
     "@typescript-eslint/prefer-interface": "off",
     "@typescript-eslint/explicit-function-return-type": "off",
     "@typescript-eslint/indent": [

@@ -41,7 +41,10 @@ const config = ({
   },
   plugins: [
     new CleanWebpackPlugin(),
-    new ForkTsCheckerWebpackPlugin(),
+    new ForkTsCheckerWebpackPlugin({
+      eslint: true,
+      formatter: 'codeframe',
+    }),
     new MiniCSSExtractPlugin({
       chunkFilename: isDev ? '[id].css' : '[id]-[contenthash].css',
       filename: isDev ? '[name].css' : '[name]-[contenthash].css',
@@ -83,7 +86,7 @@ const config = ({
         ],
       },
       {
-        test: /\.(js|ts)?x$/,
+        test: /\.(js|ts)x?$/,
         exclude: /node_modules/,
         enforce: 'pre',
         use: [
@@ -100,7 +103,7 @@ const config = ({
         ],
       },
       {
-        test: /\.(js|ts)?x$/,
+        test: /\.(js|ts)x?$/,
         exclude: /node_modules/,
         use: [
           {

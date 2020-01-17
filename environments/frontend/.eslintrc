@@ -194,7 +194,7 @@
         "after": true
       }
     ],
-    "import/newline-after-import": "off",
+    "import/order": "error",
     "jsx-a11y/anchor-is-valid": [
       "error",
       {
@@ -315,7 +315,10 @@
     ],
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "warn",
-    "@typescript-eslint/semi": "off",
+    "@typescript-eslint/semi": [
+      "error",
+      "never"
+    ],
     "@typescript-eslint/prefer-interface": "off",
     "@typescript-eslint/explicit-function-return-type": "off",
     "@typescript-eslint/indent": [
