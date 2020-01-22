@@ -1,30 +1,22 @@
-import create from 'zustand'
-import { devtools } from 'zustand/middleware'
-import isDev from 'Utils/env'
-import { log } from 'Api/middleware'
-import userImmer from './actions'
-import userState from './state'
+import ZustandMiddlewareCreator from 'Api/middleware'
+import userActions from './actions'
+import userState, { UserState } from './state'
 
-const userLog = log(userState)
-
-let userStore
-
-if (isDev) {
-  userStore = create(
-    devtools(
-      userLog(
-        userImmer,
-      ),
-    ),
-  )
-} else {
-  userStore = create(userImmer)
+class UserStore extends ZustandMiddlewareCreator<UserState> {
+  constructor () {
+    super(
+      userActions,
+      userState,
+    )
+  }
 }
+
+const userStore = new UserStore()
 
 const [
   useUserStore,
   userApi,
-] = userStore
+] = userStore.createStore()
 
 export {
   userApi,

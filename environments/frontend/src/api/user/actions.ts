@@ -1,13 +1,12 @@
-import { immer } from 'Api/middleware'
-import userState, { UserState } from './state'
+import { ZustandActions } from 'Utils/types'
+import { UserState } from './state'
 
-const userImmer = immer(userState)(set => ({
-  ...userState,
-  setUser: (user: UserState) => set((state: UserState) => {
+const userActions: ZustandActions<UserState> = set => ({
+  setUser: (user: UserState) => set(state => {
     state.email = user.email
     state.name = user.name
     state.id = Math.random()
   }, 'Set User'),
-}))
+})
 
-export default userImmer
+export default userActions
