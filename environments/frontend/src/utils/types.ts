@@ -10,7 +10,7 @@ export interface ChildrenProps {
   children: ReactNode
 }
 
-export type ZustandActions<S> = (set: ZustandNamedSet<S>) => {
+export type ZustandActions<S> = (set: ZustandNamedSet<S>, get: GetState<S>) => {
   [x: string]: (...args: any) => void
 }
 

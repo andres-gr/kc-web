@@ -6,19 +6,25 @@ import {
   ZustandActions,
   ZustandMiddleware,
 } from 'Utils/types'
-import isDev from 'Utils/env'
 
-abstract class ZustandMiddlewareCreator<S extends State> {
-  constructor (
-    protected actions: ZustandActions<S>,
-    protected state: S,
-  ) {}
+interface StoreParams<S> {
+  actions: ZustandActions<S>
+  name?: string
+  state: S
+}
+
+abstract class ZustandStoreCreator<S extends State, A> {
+  constructor (protected params: StoreParams<S>) {}
 
   protected createLog = () => {
     const log: ZustandMiddleware<S> = config => (set, get, api) => config(args => {
-      console.log(' applying', args)
+      console.log(''.padEnd(80, '-•-'))
+      console.log(' old state', get())
+      console.log(''.padEnd(80, '  '))
       set(args)
       console.log(' new state', get())
+      console.log(''.padEnd(80, '-•-'))
+      console.log(''.padEnd(80, '  '))
     }, get, api)
     return log
   }
@@ -29,27 +35,21 @@ abstract class ZustandMiddlewareCreator<S extends State> {
   }
 
   public createStore () {
-    if (isDev) {
-      return create<S>(
-        devtools(
-          this.createLog()(
-            this.createImmer()(set => ({
-              ...this.state,
-              ...this.actions(set),
-            })),
-          ),
-        ),
-      )
-    }
-    return create<S>(
+    const {
+      actions,
+      name = 'Zustand Store',
+      state,
+    } = this.params
+    return create<S & A>(
       devtools(
-        this.createImmer()(set => ({
-          ...this.state,
-          ...this.actions(set),
+        this.createImmer()((set, get) => ({
+          ...state,
+          ...actions(set, get),
         })),
+        name,
       ),
     )
   }
 }
 
-export default ZustandMiddlewareCreator
+export default ZustandStoreCreator

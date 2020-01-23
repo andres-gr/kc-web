@@ -1,12 +1,15 @@
-import ZustandMiddlewareCreator from 'Api/middleware'
-import userActions from './actions'
+import ZustandStoreCreator from 'Api/store'
+import userActions, { UserActions } from './actions'
 import userState, { UserState } from './state'
 
-class UserStore extends ZustandMiddlewareCreator<UserState> {
+class UserStore extends ZustandStoreCreator<UserState, UserActions> {
   constructor () {
     super(
-      userActions,
-      userState,
+      {
+        actions : userActions,
+        name    : 'User Store',
+        state   : userState,
+      },
     )
   }
 }

@@ -1,12 +1,12 @@
 export interface UserState {
   email: string
-  id: number
+  id: string
   name: string
 }
 
 const userState: UserState = {
   email : '',
-  id    : null,
+  id    : '',
   name  : '',
 }
 
