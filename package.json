@@ -17,6 +17,7 @@
     "prod": "run-s build serve",
     "lint:backend": "yarn workspace backend lint",
     "lint:frontend": "yarn workspace frontend lint",
+    "lint:all": "run-s lint:backend lint:frontend",
     "postinstall": "chmod +x ./postinstall/script.sh && ./postinstall/script.sh"
   },
   "devDependencies": {
@@ -26,8 +27,8 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "run-s lint:backend lint:frontend",
-      "pre-push": "run-s lint:backend lint:frontend"
+      "pre-commit": "yarn lint:all",
+      "pre-push": "yarn lint:all"
     }
   }
 }
