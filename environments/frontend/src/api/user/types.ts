@@ -1,0 +1,9 @@
+const FETCH_USER = 'FETCH_USER'
+const SET_USER = 'SET_USER'
+const USER_STORE = 'USER_STORE'
+
+export {
+  FETCH_USER,
+  SET_USER,
+  USER_STORE,
+}

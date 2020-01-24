@@ -9,7 +9,7 @@ import {
 
 interface StoreParams<S> {
   actions: ZustandActions<S>
-  name?: string
+  name: string
   state: S
 }
 
@@ -21,7 +21,7 @@ abstract class ZustandStoreCreator<S extends State, A> {
       console.log(''.padEnd(80, '-•-'))
       console.log(' old state', get())
       console.log(''.padEnd(80, '  '))
-      set(args)
+      set(args, 'LOGGER')
       console.log(' new state', get())
       console.log(''.padEnd(80, '-•-'))
       console.log(''.padEnd(80, '  '))
@@ -37,7 +37,7 @@ abstract class ZustandStoreCreator<S extends State, A> {
   public createStore () {
     const {
       actions,
-      name = 'Zustand Store',
+      name,
       state,
     } = this.params
     return create<S & A>(

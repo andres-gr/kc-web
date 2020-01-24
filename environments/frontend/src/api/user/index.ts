@@ -1,13 +1,14 @@
 import ZustandStoreCreator from 'Api/store'
 import userActions, { UserActions } from './actions'
 import userState, { UserState } from './state'
+import { USER_STORE } from './types'
 
 class UserStore extends ZustandStoreCreator<UserState, UserActions> {
   constructor () {
     super(
       {
         actions : userActions,
-        name    : 'User Store',
+        name    : USER_STORE,
         state   : userState,
       },
     )

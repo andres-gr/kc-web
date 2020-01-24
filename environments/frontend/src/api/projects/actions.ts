@@ -5,6 +5,10 @@ import {
   Project,
   ProjectsState,
 } from './state'
+import {
+  ADD_PROJECT,
+  FETCH_PROJECT,
+} from './types'
 
 export interface ProjectsActions {
   addProject: (project: Project) => (void | Promise<void>)
@@ -14,14 +18,12 @@ export interface ProjectsActions {
 const projectsActions: ZustandActions<ProjectsState> = set => ({
   addProject: async (project: Project) => {
     await delay(500)
-    set(state => {
-      state.projects.push(project)
-    }, 'Add Project')
+    set(state => void state.projects.push(project), ADD_PROJECT)
   },
   fetchProject: async () => {
     const result = await Axios.get<Project>('http://localhost:4000/project')
     const { data } = result
-    set(state => void state.projects.push(data))
+    set(state => void state.projects.push(data), FETCH_PROJECT)
   },
 })
 
