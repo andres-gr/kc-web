@@ -1,7 +1,7 @@
 export interface Project {
+  author: string
+  company: string
   id: string
-  name: string
-  user: string
 }
 
 export interface ProjectsState {

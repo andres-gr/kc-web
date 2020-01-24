@@ -1,22 +1,11 @@
 import React, { FC } from 'react'
 import { Link } from 'react-router-dom'
-import Chance from 'chance'
 import { useProjectsStore } from 'Api/projects'
-
-const chance = new Chance()
 
 const Home: FC = () => {
   const projects = useProjectsStore(state => state.projects)
 
-  const addProject = useProjectsStore(state => state.addProject)
-
-  const _handleClick = () => {
-    addProject({
-      id   : chance.guid({ version: 4 }),
-      name : chance.company(),
-      user : chance.name(),
-    })
-  }
+  const fetchProject = useProjectsStore(state => state.fetchProject)
 
   return (
     <div>
@@ -31,21 +20,21 @@ const Home: FC = () => {
       <div>
         <button
           type="button"
-          onClick={ _handleClick }
+          onClick={ fetchProject }
         >
           press
         </button>
       </div>
       {
         projects.map(({
+          author,
+          company,
           id,
-          name,
-          user,
         }) => (
           <p key={ id }>
-            <span>{ name }</span>
+            <span>{ company }</span>
             { ' - ' }
-            <span>{ user }</span>
+            <span>{ author }</span>
           </p>
         ))
       }
