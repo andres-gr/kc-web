@@ -2,10 +2,7 @@ import Axios from 'axios'
 import { ZustandActions } from 'Utils/types'
 import delay from 'Utils/delay'
 import { UserState } from './state'
-import {
-  FETCH_USER,
-  SET_USER,
-} from './types'
+import UserTypes from './types'
 
 export interface UserActions<S = Partial<UserState>> {
   setUser: (user: S) => (void | Promise<void>)
@@ -19,7 +16,7 @@ const userActions: ZustandActions<UserState> = set => ({
       state.email = data.email
       state.id = data.id
       state.name = data.name
-    }, FETCH_USER)
+    }, UserTypes.FETCH_USER)
   },
   setUser: async (user: UserState) => {
     await delay(500)
@@ -27,7 +24,7 @@ const userActions: ZustandActions<UserState> = set => ({
       state.email = user.email
       state.name = user.name
       state.id = user.id
-    }, SET_USER)
+    }, UserTypes.SET_USER)
   },
 })
 
