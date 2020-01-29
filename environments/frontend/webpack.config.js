@@ -1,4 +1,5 @@
 const merge = require('webpack-merge');
+
 const configValidations = require('./webpack/configValidations');
 
 module.exports = env => {

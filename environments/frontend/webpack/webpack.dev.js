@@ -1,5 +1,6 @@
 const path = require('path');
 const webpack = require('webpack');
+
 const rootPath = require('./path');
 
 const port = process.env.PORT || 3000;
