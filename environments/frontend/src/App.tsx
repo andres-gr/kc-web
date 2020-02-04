@@ -1,3 +1,4 @@
+import { hot } from 'react-hot-loader/root'
 import React, { FC } from 'react'
 import {
   BrowserRouter,
@@ -27,4 +28,4 @@ const App: FC = () => (
   </BrowserRouter>
 )
 
-export default App
+export default hot(App)
