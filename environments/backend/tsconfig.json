@@ -22,7 +22,7 @@
     "target": "ES6"
   },
   "include": [
-    "./src"
+    "./src/**/*"
   ],
   "exclude": [
     "node_modules"
