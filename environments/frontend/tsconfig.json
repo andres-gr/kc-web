@@ -7,9 +7,10 @@
     "forceConsistentCasingInFileNames": true,
     "jsx": "preserve",
     "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
+      "DOM",
+      "DOM.Iterable",
+      "ES6",
+      "ScriptHost"
     ],
     "module": "esnext",
     "moduleResolution": "node",
