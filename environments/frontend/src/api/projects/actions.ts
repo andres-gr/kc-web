@@ -1,5 +1,8 @@
 import Axios from 'axios'
-import { ZustandActions } from 'Utils/types'
+import {
+  AnyPromise,
+  ZustandActions,
+} from 'Utils/types'
 import delay from 'Utils/delay'
 import {
   Project,
@@ -9,7 +12,7 @@ import ProjectsTypes from './types'
 
 export interface ProjectsActions {
   addProject: (project: Project) => (void | Promise<void>)
-  fetchProject: (...args: any) => Promise<void>
+  fetchProject: AnyPromise
 }
 
 const projectsActions: ZustandActions<ProjectsState> = set => ({

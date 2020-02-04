@@ -5,6 +5,10 @@
     "esModuleInterop": true,
     "experimentalDecorators": true,
     "forceConsistentCasingInFileNames": true,
+    "lib": [
+      "ES6",
+      "ScriptHost"
+    ],
     "module": "commonjs",
     "moduleResolution": "node",
     "noEmit": true,
@@ -13,12 +17,12 @@
     "resolveJsonModule": true,
     "skipLibCheck": true,
     "sourceMap": true,
-    "strict": false,
-    "strictNullChecks": false,
-    "target": "es6"
+    "rootDir": "./src",
+    "strict": true,
+    "target": "ES6"
   },
   "include": [
-    "./src/**/*"
+    "./src"
   ],
   "exclude": [
     "node_modules"

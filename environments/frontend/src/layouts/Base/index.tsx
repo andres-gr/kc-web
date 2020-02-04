@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import { ChildrenProps } from 'Utils/types'
 import { useUserStore } from 'Api/user'
 
-const Base: FC = ({ children }: ChildrenProps) => {
+const Base: FC<ChildrenProps> = ({ children }: ChildrenProps) => {
   const fetchUser = useUserStore(state => state.fetchUser)
 
   const name = useUserStore(state => state.name)

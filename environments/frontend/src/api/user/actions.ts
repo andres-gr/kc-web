@@ -1,12 +1,15 @@
 import Axios from 'axios'
-import { ZustandActions } from 'Utils/types'
+import {
+  AnyPromise,
+  ZustandActions,
+} from 'Utils/types'
 import delay from 'Utils/delay'
 import { UserState } from './state'
 import UserTypes from './types'
 
 export interface UserActions<S = Partial<UserState>> {
   setUser: (user: S) => (void | Promise<void>)
-  fetchUser: (...args: any) => Promise<void>
+  fetchUser: AnyPromise
 }
 
 const userActions: ZustandActions<UserState> = set => ({

@@ -3,6 +3,7 @@ import produce from 'immer'
 import create, { State } from 'zustand'
 import { devtools } from 'zustand/middleware'
 import {
+  AnyPromise,
   ZustandActions,
   ZustandMiddleware,
 } from 'Utils/types'
@@ -30,7 +31,7 @@ abstract class ZustandStoreCreator<S extends State, A> {
   }
 
   protected createImmer = () => {
-    const immer: ZustandMiddleware<S> = config => (set, get, api) => config((fn: (state: S) => void, name) => set(produce(fn), name), get, api)
+    const immer: ZustandMiddleware<S> = config => (set, get, api) => config((fn, name) => set(produce<AnyPromise>(fn), name), get, api)
     return immer
   }
 
