@@ -345,6 +345,7 @@
     ],
     "putout/single-property-destructuring": "off",
     "putout/long-properties-destructuring": "error",
+    "putout/keyword-spacing": "off",
     "module-resolver/use-alias": [
       "error",
       {
