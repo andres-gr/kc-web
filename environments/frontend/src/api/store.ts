@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import produce from 'immer'
 import create, { State } from 'zustand'
 import { devtools } from 'zustand/middleware'
@@ -15,22 +14,9 @@ interface StoreParams<S, A> {
 }
 
 abstract class ZustandStoreCreator<S extends State, A> {
-  constructor (protected params: StoreParams<S, A>) {}
+  constructor (private params: StoreParams<S, A>) {}
 
-  protected createLog = () => {
-    const log: ZustandMiddleware<S> = config => (set, get, api) => config(args => {
-      console.log(''.padEnd(80, '-•-'))
-      console.log(' old state', get())
-      console.log(''.padEnd(80, '  '))
-      set(args, 'LOGGER')
-      console.log(' new state', get())
-      console.log(''.padEnd(80, '-•-'))
-      console.log(''.padEnd(80, '  '))
-    }, get, api)
-    return log
-  }
-
-  protected createImmer = () => {
+  private createImmer = () => {
     const immer: ZustandMiddleware<S> = config => (set, get, api) => config((fn, name) => set(produce<AnyPromise>(fn), name), get, api)
     return immer
   }
