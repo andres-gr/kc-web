@@ -1,22 +1,30 @@
-{
+const path = require('path');
+
+const tsPath = path.resolve(__dirname, 'tsconfig.json')
+
+module.exports = {
   "env": {
-    "browser": true
+    "node": true
   },
   "extends": [
-    "airbnb-typescript",
+    "airbnb-typescript/base",
+    "plugin:@typescript-eslint/eslint-recommended",
+    "plugin:@typescript-eslint/recommended",
     "plugin:putout/recommended",
     "plugin:import/errors",
     "plugin:import/warnings",
     "plugin:import/typescript"
   ],
   "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "project": tsPath
+  },
   "plugins": [
     "module-resolver",
     "import",
     "putout",
     "sort-destructure-keys",
-    "sort-exports",
-    "react-hooks"
+    "sort-exports"
   ],
   "rules": {
     "no-console": "warn",
@@ -79,10 +87,7 @@
       }
     ],
     "no-nested-ternary": "off",
-    "space-before-function-paren": [
-      "error",
-      "always"
-    ],
+    "space-before-function-paren": "off",
     "no-underscore-dangle": "off",
     "max-len": "off",
     "one-var": "off",
@@ -195,126 +200,6 @@
       }
     ],
     "import/order": "error",
-    "jsx-a11y/anchor-is-valid": [
-      "error",
-      {
-        "components": [
-          "Link"
-        ],
-        "specialLink": [
-          "hrefLeft",
-          "hrefRight",
-          "to"
-        ],
-        "aspects": [
-          "invalidHref",
-          "preferButton"
-        ]
-      }
-    ],
-    "jsx-a11y/label-has-associated-control": [
-      "error",
-      {
-        "controlComponents": [
-          "FastField",
-          "Field"
-        ]
-      }
-    ],
-    "react/jsx-curly-spacing": [
-      "error",
-      {
-        "when": "always",
-        "children": true,
-        "allowMultiline": true,
-        "spacing": {
-          "objectLiterals": "never"
-        }
-      }
-    ],
-    "react/jsx-curly-newline": [
-      "error",
-      {
-        "multiline": "require",
-        "singleline": "forbid"
-      }
-    ],
-    "react/forbid-prop-types": "off",
-    "react/jsx-one-expression-per-line": "off",
-    "react/jsx-wrap-multilines": [
-      "error",
-      {
-        "declaration": "parens-new-line",
-        "assignment": "parens-new-line",
-        "return": "parens-new-line",
-        "arrow": "parens-new-line",
-        "condition": "parens-new-line",
-        "logical": "parens-new-line",
-        "prop": "parens-new-line"
-      }
-    ],
-    "react/jsx-props-no-spreading": "off",
-    "react/jsx-max-props-per-line": [
-      "error",
-      {
-        "when": "always",
-        "maximum": 1
-      }
-    ],
-    "react/sort-comp": [
-      "error",
-      {
-        "order": [
-          "type-annotations",
-          "static-variables",
-          "static-methods",
-          "instance-variables",
-          "instance-methods",
-          "lifecycle",
-          "getters",
-          "setters",
-          "/^handle.+$/",
-          "everything-else",
-          "rendering"
-        ],
-        "groups": {
-          "rendering": [
-            "/^render.+$/",
-            "render"
-          ]
-        }
-      }
-    ],
-    "react/jsx-sort-default-props": [
-      "error",
-      {
-        "ignoreCase": true
-      }
-    ],
-    "react/sort-prop-types": [
-      "error",
-      {
-        "callbacksLast": true,
-        "ignoreCase": true,
-        "requiredFirst": true,
-        "sortShapeProp": true
-      }
-    ],
-    "react/jsx-sort-props": [
-      "error",
-      {
-        "callbacksLast": true,
-        "ignoreCase": true,
-        "shorthandFirst": true,
-        "reservedFirst": [
-          "key",
-          "ref"
-        ]
-      }
-    ],
-    "react/display-name": "off",
-    "react-hooks/rules-of-hooks": "error",
-    "react-hooks/exhaustive-deps": "warn",
     "@typescript-eslint/semi": [
       "error",
       "never"
@@ -334,6 +219,31 @@
         "flatTernaryExpressions": true
       }
     ],
+    "@typescript-eslint/space-before-function-paren": [
+      "error",
+      "always"
+    ],
+    "@typescript-eslint/member-delimiter-style": [
+      "error",
+      {
+        "multiline": {
+          "delimiter": "none",
+          "requireLast": false
+        },
+        "singleline": {
+          "delimiter": "comma",
+          "requireLast": false
+        }
+      }
+    ],
+    "@typescript-eslint/no-non-null-assertion": "off",
+    "@typescript-eslint/no-explicit-any": [
+      "off",
+      {
+        "fixToUnknown": true,
+        "ignoreRestArgs": true
+      }
+    ],
     "putout/putout": "off",
     "putout/align-spaces": "off",
     "putout/destructuring-as-function-argument": "off",
@@ -349,7 +259,7 @@
     "module-resolver/use-alias": [
       "error",
       {
-        "projectRoot": "/environments/frontend/"
+        "projectRoot": "/environments/backend/"
       }
     ],
     "sort-destructure-keys/sort-destructure-keys": "error",
@@ -364,19 +274,18 @@
   "settings": {
     "import/extensions": [
       ".js",
-      ".jsx",
-      ".ts",
-      ".tsx"
+      ".ts"
     ],
     "import/resolver": {
-      "babel-module": {},
+      "node": {
+        "paths": [
+          "/environments/backend/src/"
+        ]
+      },
       "typescript": {
         "alwaysTryTypes": true,
         "directory": "/environments/*/tsconfig.json"
       }
-    },
-    "react": {
-      "version": "detect"
     }
   }
-}
+};
