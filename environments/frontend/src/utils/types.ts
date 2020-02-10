@@ -11,9 +11,13 @@ export interface ChildrenProps {
   children: ReactNode
 }
 
-export type ZustandActions<S> = (set: ZustandNamedSet<S>, get: GetState<S>) => ({
-  [x: string]: AnyPromise
-})
+export type Impossible<K extends keyof any> = {
+  [P in K]: never
+}
+
+export type NoExtraProperties<T, U extends T = T> = U & Impossible<Exclude<keyof U, keyof T>>
+
+export type ZustandActions<S, A> = (set: ZustandNamedSet<S>, get: GetState<S>) => A
 
 export type ZustandMiddleware<S> = (config: ZustandStateCreator<S>) => ZustandStateCreator<S>
 

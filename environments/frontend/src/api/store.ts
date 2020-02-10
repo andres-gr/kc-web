@@ -8,14 +8,14 @@ import {
   ZustandMiddleware,
 } from 'Utils/types'
 
-interface StoreParams<S> {
-  actions: ZustandActions<S>
+interface StoreParams<S, A> {
+  actions: ZustandActions<S, A>
   name: string
   state: S
 }
 
 abstract class ZustandStoreCreator<S extends State, A> {
-  constructor (protected params: StoreParams<S>) {}
+  constructor (protected params: StoreParams<S, A>) {}
 
   protected createLog = () => {
     const log: ZustandMiddleware<S> = config => (set, get, api) => config(args => {

@@ -15,8 +15,8 @@ export interface ProjectsActions {
   fetchProject: AnyPromise
 }
 
-const projectsActions: ZustandActions<ProjectsState> = set => ({
-  addProject: async (project: Project) => {
+const projectsActions: ZustandActions<ProjectsState, ProjectsActions> = set => ({
+  addProject: async project => {
     await delay(500)
     set(state => void state.projects.push(project), ProjectsTypes.ADD_PROJECT)
   },

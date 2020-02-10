@@ -7,12 +7,12 @@ import delay from 'Utils/delay'
 import { UserState } from './state'
 import UserTypes from './types'
 
-export interface UserActions<S = Partial<UserState>> {
+export interface UserActions<S = UserState> {
   setUser: (user: S) => (void | Promise<void>)
   fetchUser: AnyPromise
 }
 
-const userActions: ZustandActions<UserState> = set => ({
+const userActions: ZustandActions<UserState, UserActions> = set => ({
   fetchUser: async () => {
     const { data } = await Axios.get<UserState>('http://localhost:4000/user')
     set(state => {
@@ -21,7 +21,7 @@ const userActions: ZustandActions<UserState> = set => ({
       state.name = data.name
     }, UserTypes.FETCH_USER)
   },
-  setUser: async (user: UserState) => {
+  setUser: async user => {
     await delay(500)
     set(state => {
       state.email = user.email
