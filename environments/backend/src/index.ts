@@ -1,3 +1,4 @@
+import 'Startup/env'
 import express from 'express'
 import cors from 'cors'
 import path from 'path'
@@ -17,7 +18,7 @@ interface Project {
 
 const chance = new Chance()
 
-const PORT = process.env.PORT || 4000
+const PORT = process.env.PORT!
 const isProd = process.env.NODE_ENV === 'production'
 
 const app = express()

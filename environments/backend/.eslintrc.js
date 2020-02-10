@@ -1,6 +1,7 @@
 const path = require('path');
 
-const tsPath = path.resolve(__dirname, 'tsconfig.json')
+const tsPath = path.resolve(__dirname, 'tsconfig.json');
+const srcPath = path.resolve(__dirname, 'src');
 
 module.exports = {
   "env": {
@@ -259,7 +260,7 @@ module.exports = {
     "module-resolver/use-alias": [
       "error",
       {
-        "projectRoot": "/environments/backend/"
+        "projectRoot": srcPath
       }
     ],
     "sort-destructure-keys/sort-destructure-keys": "error",
@@ -277,14 +278,10 @@ module.exports = {
       ".ts"
     ],
     "import/resolver": {
-      "node": {
-        "paths": [
-          "/environments/backend/src/"
-        ]
-      },
+      "babel-module": {},
       "typescript": {
         "alwaysTryTypes": true,
-        "directory": "/environments/*/tsconfig.json"
+        "directory": tsPath
       }
     }
   }
