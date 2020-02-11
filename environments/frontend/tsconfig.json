@@ -32,6 +32,9 @@
       "Pages/*": [
         "./pages/*"
       ],
+      "Static/*": [
+        "./static/*"
+      ],
       "Styles/*": [
         "./styles/*"
       ],
