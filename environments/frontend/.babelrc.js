@@ -2,8 +2,6 @@ const alias = require('./webpack/alias');
 
 module.exports = {
   presets: [
-    '@babel/preset-env',
-    '@babel/preset-react',
     [
       '@babel/preset-typescript',
       {
@@ -11,6 +9,17 @@ module.exports = {
         isTSX: true,
       },
     ],
+    [
+      '@babel/preset-env',
+      {
+        corejs: {
+          proposals: true,
+          version: 3,
+        },
+        useBuiltIns: 'usage',
+      },
+    ],
+    '@babel/preset-react',
   ],
   plugins: [
     '@babel/plugin-proposal-optional-chaining',

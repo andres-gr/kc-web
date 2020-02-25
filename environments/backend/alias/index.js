@@ -1,7 +1,5 @@
-const path = require('path');
-
 const alias = {
-  'Startup': path.resolve(__dirname, '../src/startup'),
+  'Startup': 'startup',
 };
 
 module.exports = alias;
