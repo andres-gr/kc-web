@@ -200,6 +200,7 @@ module.exports = {
         "after": true
       }
     ],
+    "consistent-return": "off",
     "import/order": "error",
     "@typescript-eslint/semi": [
       "error",

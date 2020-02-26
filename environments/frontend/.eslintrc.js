@@ -201,6 +201,7 @@ module.exports = {
         "after": true
       }
     ],
+    "consistent-return": "off",
     "import/order": "error",
     "jsx-a11y/anchor-is-valid": [
       "error",
