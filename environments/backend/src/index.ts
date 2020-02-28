@@ -1,8 +1,8 @@
 import 'Startup/env'
-import express from 'express'
 import cors from 'cors'
+import express from 'express'
+import faker from 'faker'
 import path from 'path'
-import Chance from 'chance'
 
 interface User {
   email: string
@@ -15,8 +15,6 @@ interface Project {
   company: string
   id: string
 }
-
-const chance = new Chance()
 
 const PORT = process.env.PORT!
 const isProd = process.env.NODE_ENV === 'production'
@@ -35,9 +33,9 @@ app.get('/user', async (_req, res) => {
   const result = await new Promise<User>(resolve => {
     setTimeout(() => {
       resolve({
-        email : chance.email(),
-        id    : chance.guid(),
-        name  : chance.name(),
+        email : faker.internet.email().toLowerCase(),
+        id    : faker.random.uuid(),
+        name  : faker.name.findName(),
       })
     }, 1500)
   })
@@ -51,9 +49,9 @@ app.get('/project', async (_req, res) => {
   const result = await new Promise<Project>(resolve => {
     setTimeout(() => {
       resolve({
-        author  : chance.name(),
-        company : chance.company(),
-        id      : chance.guid(),
+        author  : faker.name.findName(),
+        company : faker.company.companyName(),
+        id      : faker.random.uuid(),
       })
     }, 1200)
   })
