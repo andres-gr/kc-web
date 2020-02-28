@@ -7,6 +7,7 @@
     "start": "cross-env NODE_ENV=development nodemon -e ts,js -w src -x babel-node --inspect src/index.ts --extensions .ts,.js",
     "build": "cross-env NODE_ENV=production rimraf build && tsc --noEmit && babel src -d build -s --extensions .js,.ts",
     "serve": "cross-env NODE_ENV=production node build/index.js",
+    "clean": "rimraf build dist",
     "lint": "eslint --ext .js,.ts src/"
   },
   "dependencies": {
