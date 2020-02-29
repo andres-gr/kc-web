@@ -35,3 +35,14 @@ router.get('/docs', setup(
     explorer: true,
   },
 ))
+
+router.get('/api-docs', (_req, res) => {
+  res.setHeader(
+    'Content-Type',
+    'application/json',
+  )
+
+  res
+    .send(specs)
+    .end()
+})
