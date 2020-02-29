@@ -17,3 +17,6 @@ postinstall
 
 # js
 *.js
+
+# generated
+api-*

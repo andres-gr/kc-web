@@ -23,3 +23,6 @@ yarn-debug.log*
 
 # misc
 .DS_Store
+
+# generated
+api-*
