@@ -15,8 +15,14 @@
     "noImplicitAny": true,
     "outDir": "build",
     "paths": {
+      "Routes/*": [
+        "./routes/*"
+      ],
       "Startup/*": [
         "./startup/*"
+      ],
+      "Utils/*": [
+        "./utils/*"
       ]
     },
     "resolveJsonModule": true,
