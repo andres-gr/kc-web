@@ -1,0 +1,94 @@
+openapi: 3.0.3
+
+info:
+  title: KC Web backend API
+  description: Test project for API documentation and codegen
+  version: 1.0.0
+  contact:
+    name: Andres Garcia
+    email: andres-gr@users.noreply.github.com
+
+servers:
+  - url: http://localhost:{port}/api/{version}
+    description: Testing v1 API
+    variables:
+      port:
+        default: 4000
+      version:
+        default: v1
+
+tags:
+  - name: Users
+    description: User management
+
+  - name: Projects
+    description: Project management
+
+components:
+  schemas:
+    User:
+      type: object
+      required:
+        - id
+        - company
+        - author
+      properties:
+        id:
+          type: string
+        company:
+          type: string
+        author:
+          type: string
+      example:
+        id: 37014kdjasf01
+        company: Funahus LLC
+        author: John Smiff
+
+    Project:
+      type: object
+      required:
+        - id
+        - name
+        - email
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        email:
+          type: string
+          format: email
+          description: Email of the user, is unique.
+      example:
+        id: 1023kljlasdfja0
+        name: John Smiff
+        email: jon@smiff.com
+
+paths:
+  /user:
+    get:
+      description: Get a random user info
+      summary: Get a random user info
+      tags:
+        - Users
+      responses:
+        200:
+          description: A random user object
+          content: 
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+
+  /project:
+    get:
+      description: Get a random project info
+      summary: Get a random project info
+      tags:
+        - Projects
+      responses:
+        200:
+          description: A random project object
+          content: 
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Project'
