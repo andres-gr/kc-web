@@ -12,15 +12,3 @@ export interface HttpErrorParams {
   message: string
   status?: number
 }
-
-export interface Project {
-  author: string
-  company: string
-  id: string
-}
-
-export interface User {
-  email: string
-  id: string
-  name: string
-}

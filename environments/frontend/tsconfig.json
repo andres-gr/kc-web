@@ -20,6 +20,9 @@
       "Api/*": [
         "./api/*"
       ],
+      "Axios-Api/*": [
+        "./api-v1/*"
+      ],
       "Components/*": [
         "./components/*"
       ],

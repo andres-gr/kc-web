@@ -9,13 +9,8 @@ info:
     email: andres-gr@users.noreply.github.com
 
 servers:
-  - url: http://localhost:{port}/api/{version}
+  - url: http://localhost:4000/api/v1
     description: Testing v1 API
-    variables:
-      port:
-        default: 4000
-      version:
-        default: v1
 
 tags:
   - name: Users
@@ -26,7 +21,7 @@ tags:
 
 components:
   schemas:
-    User:
+    Project:
       type: object
       required:
         - id
@@ -44,7 +39,7 @@ components:
         company: Funahus LLC
         author: John Smiff
 
-    Project:
+    User:
       type: object
       required:
         - id

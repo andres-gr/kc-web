@@ -20,7 +20,7 @@ router.get('/docs', setup(
 router.get('/api-docs', (_req, res) => {
   res.setHeader(
     'Content-Type',
-    'application/yaml',
+    'application/json',
   )
 
   res

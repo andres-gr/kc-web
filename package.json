@@ -16,7 +16,9 @@
     "serve": "yarn workspace backend serve",
     "prod": "run-s build serve",
     "clean:backend": "yarn workspace backend clean",
+    "generate-types:backend": "yarn workspace backend generate-types",
     "fetch-api:frontend": "yarn workspace frontend fetch-api",
+    "generate-all": "run-s generate-types:backend fetch-api:frontend",
     "lint:backend": "yarn workspace backend lint",
     "lint:frontend": "yarn workspace frontend lint",
     "lint:all": "run-s lint:backend lint:frontend"

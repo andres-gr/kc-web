@@ -15,6 +15,9 @@
     "noImplicitAny": true,
     "outDir": "build",
     "paths": {
+      "Api/*": [
+        "./api-v1/*"
+      ],
       "Routes/*": [
         "./routes/*"
       ],

@@ -8,6 +8,7 @@
     "build": "cross-env NODE_ENV=production rimraf build && tsc --noEmit && babel src -d build -s --extensions .js,.ts",
     "serve": "cross-env NODE_ENV=production node build/index.js",
     "clean": "rimraf build dist",
+    "generate-types": "rimraf src/api-v1 && openapi-generator generate -c openapi-config.json -i src/api-v1.yaml -g typescript-fetch -o src/api-v1",
     "lint": "eslint --ext .js,.ts src/"
   },
   "dependencies": {

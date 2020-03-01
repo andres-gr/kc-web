@@ -1,54 +1,7 @@
 import faker from 'faker'
 import router from 'Routes/router'
-import { Project } from 'Utils/types'
-import apis from 'Utils/swaggerApis'
+import { Project } from 'Api/models'
 
-/**
- * @swagger
- * tags:
- *  name: Projects
- *  description: Project management
- */
-
-/**
- * @swagger
- *  components:
- *    schemas:
- *      Project:
- *        type: object
- *        required:
- *          - author
- *          - company
- *          - id
- *        properties:
- *          id:
- *            type: string
- *          company:
- *            type: string
- *          author:
- *            type: string
- *        example:
- *          id: 10dksfa01
- *          company: Funhaus LLC
- *          author: Jon Smiff
- */
-
-/**
- * @swagger
- * path:
- *  /project:
- *    get:
- *      description: Get a random project
- *      summary: Get a random project
- *      tags: [Projects]
- *      responses:
- *        '200':
- *          description: A random project object
- *          content:
- *            application/json:
- *              schema:
- *                $ref: '#/components/schemas/Project'
- */
 router.get('/project', async (_req, res) => {
   const result = await new Promise<Project>(resolve => {
     setTimeout(() => {
@@ -64,5 +17,3 @@ router.get('/project', async (_req, res) => {
     .json({ ...result })
     .end()
 })
-
-apis.push('./src/routes/project.ts')
