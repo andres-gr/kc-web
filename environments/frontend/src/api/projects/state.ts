@@ -1,8 +1,4 @@
-export interface Project {
-  author: string
-  company: string
-  id: string
-}
+import { Project } from 'Axios/api'
 
 export interface ProjectsState {
   projects: Project[]

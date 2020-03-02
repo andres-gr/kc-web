@@ -1,20 +1,24 @@
-import Axios from 'axios'
+import {
+  User,
+  UsersApi,
+} from 'Axios/api'
 import {
   AnyPromise,
   ZustandActions,
 } from 'Utils/types'
 import delay from 'Utils/delay'
-import { UserState } from './state'
 import UserTypes from './types'
 
-export interface UserActions<S = UserState> {
+export interface UserActions<S = User> {
   setUser: (user: S) => (void | Promise<void>)
   fetchUser: AnyPromise
 }
 
-const userActions: ZustandActions<UserState, UserActions> = set => ({
+const UsersAxios = new UsersApi()
+
+const userActions: ZustandActions<User, UserActions> = set => ({
   fetchUser: async () => {
-    const { data } = await Axios.get<UserState>('http://localhost:4000/user')
+    const { data } = await UsersAxios.userGet()
     set(state => {
       state.email = data.email
       state.id = data.id

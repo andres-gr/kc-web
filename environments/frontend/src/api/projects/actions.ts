@@ -1,13 +1,13 @@
-import Axios from 'axios'
+import {
+  Project,
+  ProjectsApi,
+} from 'Axios/api'
 import {
   AnyPromise,
   ZustandActions,
 } from 'Utils/types'
 import delay from 'Utils/delay'
-import {
-  Project,
-  ProjectsState,
-} from './state'
+import { ProjectsState } from './state'
 import ProjectsTypes from './types'
 
 export interface ProjectsActions {
@@ -15,13 +15,15 @@ export interface ProjectsActions {
   fetchProject: AnyPromise
 }
 
+const ProjectsAxios = new ProjectsApi()
+
 const projectsActions: ZustandActions<ProjectsState, ProjectsActions> = set => ({
   addProject: async project => {
     await delay(500)
     set(state => void state.projects.push(project), ProjectsTypes.ADD_PROJECT)
   },
   fetchProject: async () => {
-    const result = await Axios.get<Project>('http://localhost:4000/project')
+    const result = await ProjectsAxios.projectGet()
     const { data } = result
     set(state => void state.projects.push(data), ProjectsTypes.FETCH_PROJECT)
   },

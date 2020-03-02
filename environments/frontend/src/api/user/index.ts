@@ -1,9 +1,10 @@
+import { User } from 'Axios/api'
 import ZustandStoreCreator from 'Api/store'
 import userActions, { UserActions } from './actions'
-import userState, { UserState } from './state'
+import userState from './state'
 import UserTypes from './types'
 
-class UserStore extends ZustandStoreCreator<UserState, UserActions> {
+class UserStore extends ZustandStoreCreator<User, UserActions> {
   constructor () {
     super(
       {

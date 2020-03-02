@@ -4,7 +4,7 @@ const rootPath = require('./path');
 
 const alias = {
   'Api': path.join(rootPath, './src/api'),
-  'Axios-Api': path.join(rootPath, './src/api-v1'),
+  'Axios': path.join(rootPath, './src/api-v1'),
   'Components': path.join(rootPath, './src/components'),
   'Hooks': path.join(rootPath, './src/hooks'),
   'Layouts': path.join(rootPath, './src/layouts'),

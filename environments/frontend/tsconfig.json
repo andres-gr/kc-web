@@ -20,7 +20,7 @@
       "Api/*": [
         "./api/*"
       ],
-      "Axios-Api/*": [
+      "Axios/*": [
         "./api-v1/*"
       ],
       "Components/*": [
@@ -56,9 +56,10 @@
     "target": "ESNext"
   },
   "include": [
-    "./src/**/*"
+    "src/**/*"
   ],
   "exclude": [
-    "node_modules"
+    "node_modules",
+    "**/api-v1/**"
   ]
 }

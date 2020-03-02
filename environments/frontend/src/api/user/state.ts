@@ -1,10 +1,6 @@
-export interface UserState {
-  email: string
-  id: string
-  name: string
-}
+import { User } from 'Axios/api'
 
-const userState: UserState = {
+const userState: User = {
   email : '',
   id    : '',
   name  : '',
