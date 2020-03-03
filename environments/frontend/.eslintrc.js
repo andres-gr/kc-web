@@ -72,15 +72,7 @@ module.exports = {
         "functions": "always-multiline"
       }
     ],
-    "no-extra-parens": [
-      "error",
-      "all",
-      {
-        "enforceForArrowConditionals": false,
-        "nestedBinaryExpressions": false,
-        "ignoreJSX": "multi-line"
-      }
-    ],
+    "no-extra-parens": "off",
     "arrow-parens": [
       "error",
       "as-needed",
@@ -365,6 +357,15 @@ module.exports = {
       {
         "fixToUnknown": true,
         "ignoreRestArgs": true
+      }
+    ],
+    "@typescript-eslint/no-extra-parens": [
+      "error",
+      "all",
+      {
+        "enforceForArrowConditionals": false,
+        "nestedBinaryExpressions": false,
+        "ignoreJSX": "multi-line"
       }
     ],
     "putout/putout": "off",

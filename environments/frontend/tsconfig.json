@@ -59,7 +59,6 @@
     "src/**/*"
   ],
   "exclude": [
-    "node_modules",
-    "**/api-v1/**"
+    "node_modules"
   ]
 }
