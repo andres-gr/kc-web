@@ -368,6 +368,15 @@ module.exports = {
         "ignoreJSX": "multi-line"
       }
     ],
+    "@typescript-eslint/no-empty-function": [
+      "error",
+      {
+        "allow": [
+          "private-constructors",
+          "protected-constructors",
+        ]
+      }
+    ],
     "putout/putout": "off",
     "putout/align-spaces": "off",
     "putout/destructuring-as-function-argument": "off",
