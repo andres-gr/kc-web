@@ -377,6 +377,7 @@ module.exports = {
         ]
       }
     ],
+    "@typescript-eslint/no-unused-vars": "error",
     "putout/putout": "off",
     "putout/align-spaces": "off",
     "putout/destructuring-as-function-argument": "off",
