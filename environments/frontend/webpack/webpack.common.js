@@ -19,7 +19,6 @@ const config = ({
   ],
   output: {
     path: path.join(rootPath, 'dist'),
-    publicPath: '/',
   },
   optimization: {
     moduleIds: 'hashed',

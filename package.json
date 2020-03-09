@@ -21,10 +21,11 @@
     "generate-all": "run-s generate-types:backend fetch-api:frontend",
     "lint:backend": "yarn workspace backend lint",
     "lint:frontend": "yarn workspace frontend lint",
-    "lint:all": "run-s lint:backend lint:frontend"
+    "lint:all": "run-s lint:backend lint:frontend",
+    "fix:husky": "yarn remove -W husky && yarn add -WD husky"
   },
   "devDependencies": {
-    "cross-env": "^7.0.0",
+    "cross-env": "^7.0.2",
     "husky": "^4.2.3",
     "npm-run-all": "^4.1.5"
   },

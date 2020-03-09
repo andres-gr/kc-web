@@ -11,6 +11,7 @@ const config = {
   output: {
     devtoolModuleFilenameTemplate: 'file:///[absolute-resource-path]',
     filename: '[name].js',
+    publicPath: '/',
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
