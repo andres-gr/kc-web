@@ -13,6 +13,7 @@
     "moduleResolution": "node",
     "noEmit": true,
     "noImplicitAny": true,
+    "noUnusedLocals": true,
     "outDir": "build",
     "paths": {
       "Api/*": [

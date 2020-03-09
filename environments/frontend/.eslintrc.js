@@ -29,6 +29,7 @@ module.exports = {
     "react-hooks"
   ],
   "rules": {
+    "no-undef": "off",
     "no-console": "warn",
     "no-var": "error",
     "indent": "off",

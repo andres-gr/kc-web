@@ -28,6 +28,7 @@ module.exports = {
     "sort-exports"
   ],
   "rules": {
+    "no-undef": "off",
     "no-console": "warn",
     "no-var": "error",
     "indent": "off",
