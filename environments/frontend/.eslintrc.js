@@ -20,6 +20,14 @@ module.exports = {
   "parserOptions": {
     "project": tsPath
   },
+  "overrides": [
+    {
+      "files": ["**/*.tsx"],
+      "rules": {
+        "react/prop-types": "off"
+      }
+    }
+  ],
   "plugins": [
     "module-resolver",
     "import",
