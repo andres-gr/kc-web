@@ -6,7 +6,7 @@ import {
 import yaml from 'yamljs'
 import router from 'Routes/router'
 
-const specs = yaml.load(path.resolve(__dirname, '../api-v1.yaml'))
+const specs = yaml.load(path.resolve(__dirname, '../v1-openapi.yaml'))
 
 router.use('/docs', serve)
 

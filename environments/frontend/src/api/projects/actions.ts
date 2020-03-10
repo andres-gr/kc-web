@@ -24,8 +24,12 @@ const projectsActions: ZustandActions<ProjectsState, ProjectsActions> = set => (
   },
   fetchProject: async () => {
     const result = await ProjectsAxios.projectGet()
-    const { data } = result
-    set(state => void state.projects.push(data), ProjectsTypes.FETCH_PROJECT)
+    const {
+      data: { project },
+    } = result
+    if (project) {
+      set(state => void state.projects.push(project), ProjectsTypes.FETCH_PROJECT)
+    }
   },
 })
 

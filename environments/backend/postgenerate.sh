@@ -30,11 +30,11 @@ for model in $models/*; do
   fi
 done
 
-indexes=$(find $PWD/src/api-v1 -name 'index.ts' -type f)
+tsfiles=$(find $PWD/src/api-v1 -name '*.ts' -type f)
 
-for index in $indexes; do
-  perl -pi -e 'print "/* eslint-disable */\n" if $. == 1' $index
-  perl -pi -e 'print "// \@ts-nocheck\n" if $. == 1' $index
+for tsfile in $tsfiles; do
+  perl -pi -e 'print "/* eslint-disable */\n" if $. == 1' $tsfile
+  perl -pi -e 'print "// \@ts-nocheck\n" if $. == 1' $tsfile
 done
 
 echo "Done!"

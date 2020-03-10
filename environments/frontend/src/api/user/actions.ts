@@ -18,12 +18,16 @@ const UsersAxios = new UsersApi()
 
 const userActions: ZustandActions<User, UserActions> = set => ({
   fetchUser: async () => {
-    const { data } = await UsersAxios.userGet()
-    set(state => {
-      state.email = data.email
-      state.id = data.id
-      state.name = data.name
-    }, UserTypes.FETCH_USER)
+    const {
+      data: { user },
+    } = await UsersAxios.userGet()
+    if (user) {
+      set(state => {
+        state.email = user.email
+        state.id = user.id
+        state.name = user.name
+      }, UserTypes.FETCH_USER)
+    }
   },
   setUser: async user => {
     await delay(500)

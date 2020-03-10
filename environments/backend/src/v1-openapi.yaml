@@ -21,6 +21,10 @@ tags:
 
 components:
   schemas:
+    BaseResponse:
+      type: string
+      example: Response message
+
     Project:
       type: object
       required:
@@ -30,14 +34,13 @@ components:
       properties:
         id:
           type: string
+          example: 37014kdjasf01
         company:
           type: string
+          example: Funahus LLC
         author:
           type: string
-      example:
-        id: 37014kdjasf01
-        company: Funahus LLC
-        author: John Smiff
+          example: John Smiff
 
     User:
       type: object
@@ -48,16 +51,31 @@ components:
       properties:
         id:
           type: string
+          example: 1023kljlasdfja0
         name:
           type: string
+          example: John Smiff
         email:
           type: string
           format: email
           description: Email of the user, is unique.
-      example:
-        id: 1023kljlasdfja0
-        name: John Smiff
-        email: jon@smiff.com
+          example: jon@smiff.com
+
+    GetUserResponse:
+      type: object
+      properties:
+        message:
+          $ref: '#/components/schemas/BaseResponse'
+        user:
+          $ref: '#/components/schemas/User'
+
+    GetProjectResponse:
+      type: object
+      properties:
+        message:
+          $ref: '#/components/schemas/BaseResponse'
+        project:
+          $ref: '#/components/schemas/Project'
 
 paths:
   /user:
@@ -72,7 +90,7 @@ paths:
           content: 
             application/json:
               schema:
-                $ref: '#/components/schemas/User'
+                $ref: '#/components/schemas/GetUserResponse'
 
   /project:
     get:
@@ -86,4 +104,4 @@ paths:
           content: 
             application/json:
               schema:
-                $ref: '#/components/schemas/Project'
+                $ref: '#/components/schemas/GetProjectResponse'

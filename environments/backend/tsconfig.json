@@ -21,6 +21,9 @@
       "Api/*": [
         "./api-v1/*"
       ],
+      "Controllers/*": [
+        "./controllers/*"
+      ],
       "Routes/*": [
         "./routes/*"
       ],
