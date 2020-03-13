@@ -43,6 +43,7 @@ module.exports = {
         ],
       },
     ],
+    'emotion',
     'react-hot-loader/babel',
   ],
 };

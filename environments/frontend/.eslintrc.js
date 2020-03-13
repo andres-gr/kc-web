@@ -34,7 +34,8 @@ module.exports = {
     "putout",
     "sort-destructure-keys",
     "sort-exports",
-    "react-hooks"
+    "react-hooks",
+    "emotion"
   ],
   "rules": {
     "no-undef": "off",
