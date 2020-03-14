@@ -38,6 +38,13 @@ module.exports = {
     "emotion"
   ],
   "rules": {
+    "quotes": [
+      "error",
+      "single",
+      {
+        "avoidEscape": true
+      }
+    ],
     "no-undef": "off",
     "no-console": "warn",
     "no-var": "error",
