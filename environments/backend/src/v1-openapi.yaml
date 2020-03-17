@@ -39,33 +39,9 @@ components:
             $ref: '#/components/schemas/TodoContent'
 
   schemas:
-    TodoContent:
-      type: object
-      properties:
-        text:
-          type: string
-          example: A new todo text content
-
     BaseResponse:
       type: string
       example: Response message
-
-    Project:
-      type: object
-      required:
-        - id
-        - company
-        - author
-      properties:
-        id:
-          type: string
-          example: 37014kdjasf01
-        company:
-          type: string
-          example: Funahus LLC
-        author:
-          type: string
-          example: John Smiff
 
     User:
       type: object
@@ -86,6 +62,39 @@ components:
           description: Email of the user, is unique.
           example: jon@smiff.com
 
+    GetUserResponse:
+      type: object
+      properties:
+        message:
+          $ref: '#/components/schemas/BaseResponse'
+        user:
+          $ref: '#/components/schemas/User'
+
+    Project:
+      type: object
+      required:
+        - id
+        - company
+        - author
+      properties:
+        id:
+          type: string
+          example: 37014kdjasf01
+        company:
+          type: string
+          example: Funahus LLC
+        author:
+          type: string
+          example: John Smiff
+
+    GetProjectResponse:
+      type: object
+      properties:
+        message:
+          $ref: '#/components/schemas/BaseResponse'
+        project:
+          $ref: '#/components/schemas/Project'
+
     Todo:
       type: object
       required:
@@ -99,21 +108,12 @@ components:
           type: string
           example: Todo text content
 
-    GetUserResponse:
+    TodoContent:
       type: object
       properties:
-        message:
-          $ref: '#/components/schemas/BaseResponse'
-        user:
-          $ref: '#/components/schemas/User'
-
-    GetProjectResponse:
-      type: object
-      properties:
-        message:
-          $ref: '#/components/schemas/BaseResponse'
-        project:
-          $ref: '#/components/schemas/Project'
+        text:
+          type: string
+          example: A new todo text content
 
     GetTodosResponse:
       type: object
