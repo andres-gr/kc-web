@@ -15,8 +15,5 @@ global.d.ts
 # misc
 postinstall
 
-# js
-*.js
-
 # generated
 api-*
