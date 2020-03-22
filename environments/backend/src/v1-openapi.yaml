@@ -19,6 +19,9 @@ tags:
   - name: Projects
     description: Project management
 
+  - name: Todos
+    description: Todo management
+
 components:
   parameters:
     todoId:
