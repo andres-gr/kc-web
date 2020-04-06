@@ -1,6 +1,6 @@
 import 'Routes/project'
-import 'Routes/user'
 import 'Routes/todos'
+import 'Routes/users'
 
 // import other routes above this line!
 import 'Routes/swagger'

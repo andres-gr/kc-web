@@ -13,24 +13,43 @@ servers:
     description: Testing v1 API
 
 tags:
-  - name: Users
-    description: User management
-
   - name: Projects
     description: Project management
 
   - name: Todos
     description: Todo management
 
+  - name: Users
+    description: User management
+
 components:
+  responses:
+    NoItemFound:
+      description: No item/s found for given ID
+      content: 
+        application/json:
+          schema:
+            $ref: '#/components/schemas/BaseErrorResponse'
+
+    UnprocessableEntity:
+      description: Incorrect or missing values
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/BaseErrorResponse'
+
   parameters:
-    todoId:
+    paramsId:
       in: path
       name: id
       required: true
-      description: Todo ID value
+      description: Item ID value
       schema:
         type: string
+
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+# # # - - - - - - - - - - - - - - - - - - - - - bodies start - - - - - - - - - - - - - - - - - - - - - - - # # #
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
   requestBodies:
     TodoBody:
@@ -41,37 +60,59 @@ components:
           schema:
             $ref: '#/components/schemas/TodoContent'
 
+    SignupBody:
+      description: Signup body
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/SignupContent'
+
+    LoginBody:
+      description: Login body
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/LoginContent'
+
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+# # # - - - - - - - - - - - - - - - - - - - - - bodies end - - - - - - - - - - - - - - - - - - - - - - - - # # #
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+# # # - - - - - - - - - - - - - - - - - - - - - schemas start - - - - - - - - - - - - - - - - - - - - - - - # # #
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+
   schemas:
     BaseResponse:
       type: string
       example: Response message
 
-    User:
+    BaseErrorResponse:
+      type: object
+      required:
+        - message
+      properties:
+        errors:
+          type: array
+          items:
+            type: object
+            additionalProperties: true
+        message:
+          $ref: '#/components/schemas/BaseResponse'
+        status:
+          type: integer
+
+    ID:
       type: object
       required:
         - id
-        - name
-        - email
       properties:
         id:
           type: string
-          example: 1023kljlasdfja0
-        name:
-          type: string
-          example: John Smiff
-        email:
-          type: string
-          format: email
-          description: Email of the user, is unique.
-          example: jon@smiff.com
-
-    GetUserResponse:
-      type: object
-      properties:
-        message:
-          $ref: '#/components/schemas/BaseResponse'
-        user:
-          $ref: '#/components/schemas/User'
+          description: Unique ID for the item
+          example: 1847kjdsasdfk
 
     Project:
       type: object
@@ -152,21 +193,104 @@ components:
         todo:
           $ref: '#/components/schemas/Todo'
 
-paths:
-  /user:
-    get:
-      description: Get a random user info
-      summary: Get a random user info
-      tags:
-        - Users
-      responses:
-        200:
-          description: A random user object
-          content: 
-            application/json:
-              schema:
-                $ref: '#/components/schemas/GetUserResponse'
+    UserBody:
+      type: object
+      required:
+        - email
+        - image
+        - name
+        - places
+      properties:
+        email:
+          type: string
+          description: User email
+          example: jon@smiff.com
+        image:
+          type: string
+          description: Profile image url for the user
+          example: http://image.stock.com/images/profile/1
+        name:
+          type: string
+          example: John Smiff
+        places:
+          type: integer
+          description: Number of places shared
+          example: 3
 
+    User:
+      allOf:
+        - $ref: '#/components/schemas/ID'
+        - $ref: '#/components/schemas/UserBody'
+
+    SignupContent:
+      type: object
+      required:
+        - name
+        - email
+        - password
+      properties:
+        name:
+          type: string
+        email:
+          type: string
+        password:
+          type: string
+
+    LoginContent:
+      type: object
+      required:
+        - email
+        - password
+      properties:
+        email:
+          type: string
+        password:
+          type: string
+
+    UserPasswords:
+      type: object
+      properties:
+        userId:
+          type: string
+      additionalProperties: true
+      description: Key value pairs of userId to hashed password
+
+    GetUsersResponse:
+      type: object
+      properties:
+        message:
+          $ref: '#/components/schemas/BaseResponse'
+        users:
+          type: array
+          items:
+            $ref: '#/components/schemas/User'
+
+    SignupResponse:
+      type: object
+      properties:
+        message:
+          $ref: '#/components/schemas/BaseResponse'
+        user:
+          $ref: '#/components/schemas/User'
+
+    LoginResponse:
+      type: object
+      properties:
+        message:
+          $ref: '#/components/schemas/BaseResponse'
+        user:
+          $ref: '#/components/schemas/User'
+
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+# # # - - - - - - - - - - - - - - - - - - - - - schemas end - - - - - - - - - - - - - - - - - - - - - - - - # # #
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+
+
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+# # # - - - - - - - - - - - - - - - - - - - - - paths start - - - - - - - - - - - - - - - - - - - - - - - - # # #
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+
+paths:
   /project:
     get:
       description: Get a random project info
@@ -211,7 +335,7 @@ paths:
 
   /todos/{id}:
     parameters:
-      - $ref: '#/components/parameters/todoId'
+      - $ref: '#/components/parameters/paramsId'
     patch:
       description: Update todo with selected ID
       summary: Update todo with selected ID
@@ -238,3 +362,67 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DeleteTodoResponse'
+
+  /users:
+    get:
+      description: Get list of users
+      summary: Get list of users
+      tags:
+        - Users
+      responses:
+        200:
+          description: Retrieved list of users successfully
+          content: 
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetUsersResponse'
+
+  /signup:
+    post:
+      description: Send a signup request
+      summary: Send a signup request
+      tags:
+        - Users
+      requestBody:
+        $ref: '#/components/requestBodies/SignupBody'
+      responses:
+        201:
+          description: Signup was successful
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SignupResponse'
+        403:
+          description: Email already in use
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BaseErrorResponse'
+        422:
+          $ref: '#/components/responses/UnprocessableEntity'
+
+  /login:
+    post:
+      description: Send a login request
+      summary: Send a login request
+      tags:
+        - Users
+      requestBody:
+        $ref: '#/components/requestBodies/LoginBody'
+      responses:
+        200:
+          description: Login was successful
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LoginResponse'
+        401:
+          description: Credentials incorrect
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BaseErrorResponse'
+
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+# # # - - - - - - - - - - - - - - - - - - - - - paths end - - - - - - - - - - - - - - - - - - - - - - - - - # # #
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #

@@ -1,19 +1,14 @@
 /* eslint-disable import/no-extraneous-dependencies */
-import { ParamsDictionary } from 'express-serve-static-core'
-
-export type ApiParams<T> = ParamsDictionary & T
-
-export class HttpError extends Error {
-  status?: number
-
-  constructor (params: HttpErrorParams) {
-    super(params.message)
-    this.message = params.message
-    this.status = params.status
-  }
-}
+import {
+  ParamsDictionary,
+  RequestHandler,
+} from 'express-serve-static-core'
+import { ValidationError } from 'express-validator'
 
 export interface HttpErrorParams {
   message: string
+  errors?: ValidationError[]
   status?: number
 }
+
+export type ReqHandler<P = never, ResBody = never, ReqBody = never> = RequestHandler<ParamsDictionary & P, ResBody, ReqBody>
